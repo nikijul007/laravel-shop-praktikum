@@ -15,7 +15,7 @@ Route::get('/start', 'IndexController@index');
 Route::get('/shop', 'IndexController@shop');
 Route::get('/', [
     'uses' => 'ProductController@getIndex',
-        'as' => 'product.index'  
+        'as' => 'product.index' 
     
 ]);
 

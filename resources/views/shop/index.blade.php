@@ -23,7 +23,7 @@ Shop
             </div>
         </div>
     </div>
-    @endforeach
+    @endforeach 
 </div>
 
 @endforeach
