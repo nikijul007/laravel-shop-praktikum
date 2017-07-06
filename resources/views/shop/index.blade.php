@@ -1,3 +1,4 @@
+
 @extends('layout.master')
 @section('titel')
 Shop
@@ -5,51 +6,26 @@ Shop
 
 
 @section('inhalt')
+@foreach($products->chunk(3) as $productChunk)
 <div class="row">
+    @foreach($productChunk as $product)
     <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-            <img src="http://msaepf.com/wp-content/uploads/piano-klavier-600x400.jpg" alt="..."
+            <img src="{{$product->imagePath}}" alt="..."
                  class='img-responsive'>
             <div class="caption">
-                <h3>Piano</h3>
-                <p class="description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                <div class="pull-left price"> 229,00€ </div>
+                <h3>{{$product->title}}</h3>
+                <p class="description">{{$product->description}}</p>
+                <div class="pull-left price"> {{ number_format($product->price, 2, ',', '.' ) }} €</div>
                 <div class="clearfix"> 
                     <a href="#" class="btn btn-success pull-right" role="button">Add to card</a>
                 </div>
             </div>
         </div>
     </div>
+    @endforeach 
+</div>
 
-    <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="data:image/jpeg;base64,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" alt="..."
-                     class='img-responsive'>
-                <div class="caption">
-                    <h3>Guitar</h3>
-                    <p class="description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                    <div class="pull-left price"> 119,00€ </div>
-                    <div class="clearfix"> 
-                        <a href="#" class="btn btn-success pull-right" role="button">Add to card</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+@endforeach
 
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Violin_case.jpg/220px-Violin_case.jpg" alt="..."
-                         class='img-responsive'>
-                    <div class="caption">
-                        <h3>Product Title</h3>
-                        <p class="description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                        <div class="pull-left price"> 129,00€ </div>
-                        <div class="clearfix"> 
-                            <a href="#" class="btn btn-success pull-right" role="button">Add to card</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endsection
+@endsection

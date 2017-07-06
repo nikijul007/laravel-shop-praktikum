@@ -11,12 +11,18 @@
   |
  */
 
-Route::get('/', 'IndexController@index');
-Route::get('/shop2', 'IndexController@shop');
+Route::get('/start', 'IndexController@index');
+Route::get('/shop', 'IndexController@shop');
+Route::get('/', [
+    'uses' => 'ProductController@getIndex',
+        'as' => 'product.index' 
+    
+]);
 
-Route::get('/shop', function() {
+
+/*Route::get('/shop', function() {
     return view('shop/index');
-});
+});*/
 
 //Route::get('/test', 'MeinController@sageHallo');
 
