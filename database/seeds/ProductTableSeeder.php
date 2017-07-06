@@ -50,7 +50,7 @@ class ProductTableSeeder extends Seeder {
                 [
             'imagePath' => 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQ8Ne-7KyCL9cxUyL_5Baien3p5zGTNLjepK1NW_WATK4t85FDO8nz5HWN__R2u9H1s6t4z1yBX&usqp=CAE',
             'title' => 'Drum',
-            'description' => 'Bestes Product zum Kaufen.',
+            'description' => 'Bestes Produkt zum Kaufen.',
             'price' => 9999.99,
         ]);
         $product->save();
