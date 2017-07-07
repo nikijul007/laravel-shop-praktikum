@@ -18,7 +18,7 @@ Shop
                 <p class="description">{{$product->description}}</p>
                 <div class="pull-left price"> {{ number_format($product->price, 2, ',', '.' ) }} €</div>
                 <div class="clearfix"> 
-                    <a href="#" class="btn btn-success pull-right" role="button">Add to card</a>
+                    <a href="{{route('product.addToCard',['id' => $product->id] )}}" class="btn btn-success pull-right" role="button">Add to card</a>
                 </div>
             </div>
         </div>
