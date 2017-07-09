@@ -5,8 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class RedirectIfAuthenticated
-{
+class Authenticate {
+
     /**
      * Handle an incoming request.
      *
@@ -15,12 +15,12 @@ class RedirectIfAuthenticated
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
-    {
-        if (Auth::guard($guard)->check()) {
-            return redirect()->route('product.index');
+    public function handle($request, Closure $next, $guard = null) {
+        if (Auth::guard($guard)->guest()) {
+//            return redirect()->guest('users.signin');
+            return redirect()->route('users.signin');
         }
-
         return $next($request);
     }
+
 }

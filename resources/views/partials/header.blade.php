@@ -8,22 +8,31 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><i class="fa fa-snapchat-square" aria-hidden="true"></i>
-Neu</a>
+            <a class="navbar-brand" href="{{route('product.index')}}"><i class="fa fa-snapchat-square" aria-hidden="true"></i> Neu</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Card</a></li>
+                <li><a href="{{route('product.shoppingCard')}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Card
+                        <span class="badge">{{Session::has('card') ? Session::get('card')->totalQty : '' }}</span>
+                    </a>
+                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user" aria-hidden="true"></i> Your Account <span class="caret"></span></a>
+                        <i class="fa fa-user-circle" aria-hidden="true"></i> Your Account <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
+                        @if(Auth::check())
+                        <li><a href="{{route('users.profile')}}"><i class="fa fa-user-circle-o" aria-hidden="true"></i></i> User Profile</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="{{route('users.logout')}}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+                        @else
+                        <li><a href="{{route('users.signup')}}"><i class="fa fa-plus" aria-hidden="true"></i> Sign-Up</a></li>
+                        <li><a href="{{route('users.signin')}}"><i class="fa fa-sign-in" aria-hidden="true"></i> Sign-In</a></li>
+                        
+                        @endif
+                        
                     </ul>
                 </li>
             </ul>
