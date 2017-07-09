@@ -3,17 +3,17 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" href="index.png">
-        <title>@yield('title')</title> 
+        <title>@yield('title')</title>
 
         <link href="starter-template.css" rel="stylesheet">
         <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
     </head>
-   
+
     <body>
         <h1> <br> <br> <font color="#009F74">Master</h1>
 
@@ -30,7 +30,7 @@
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-
+                        <li></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="contact.blade.php">Contact</a></li>
                         <li><a href="seite1.html">Formular1</a>
