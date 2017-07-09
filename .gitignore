@@ -31,7 +31,8 @@ Thumbs.db
 *.iml
 
 ## Directory-based project format:
-.idea/*
+.idea/
+.idea/workspace.xml
 
 ## File-based project format:
 *.ipr
