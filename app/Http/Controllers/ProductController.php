@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Session;
-use App\Card;
-use App\Product;
+use App\Models\Card;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
