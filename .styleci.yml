@@ -1,0 +1,21 @@
+preset: laravel
+
+risky: false
+
+linting: true
+
+enabled:
+  - unalign_double_arrow
+
+finder:
+  path:
+    - "app"
+    - "config"
+    - "resources"
+    - "routes"
+    - "tests"
+  exclude:
+      - "resources/assets/vendor"
+      - "resources/lang"
+  name:
+    - "*.php"
