@@ -5,6 +5,7 @@
 
 
 @section('inhalt')
+<<<<<<< HEAD
     @foreach($products->chunk(3) as $productChunk)
         <div class="row">
             @foreach($productChunk as $product)
@@ -17,10 +18,25 @@
                             <p class="description">{{$product->description}}</p>
                             <div class="pull-left price"> {{ number_format($product->price, 2, ',', '.' ) }} €</div>
                             <div class="clearfix">
-                    <a href="{{route('product.addToCard',['id' => $product->id] )}}" class="btn btn-success pull-right" role="button">Add to card</a>
+                                <a href="#" class="btn btn-success pull-right" role="button">Add to card</a>
                             </div>
                         </div>
                     </div>
+=======
+@foreach($products->chunk(3) as $productChunk)
+<div class="row">
+    @foreach($productChunk as $product)
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="{{$product->imagePath}}" alt="..."
+                 class='img-responsive'>
+            <div class="caption">
+                <h3>{{$product->title}}</h3>
+                <p class="description">{{$product->description}}</p>
+                <div class="pull-left price"> {{ number_format($product->price, 2, ',', '.' ) }} €</div>
+                <div class="clearfix"> 
+                    <a href="{{route('product.addToCard',['id' => $product->id] )}}" class="btn btn-success pull-right" role="button">Add to card</a>
+>>>>>>> 556e7c472eaf976ed41755d35a5939d409521790
                 </div>
             @endforeach
         </div>

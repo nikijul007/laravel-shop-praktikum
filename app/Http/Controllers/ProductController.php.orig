@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
+use App\Product;
+use Illuminate\Http\Request;
+=======
+use Illuminate\Http\Request;
 use App\Product;
 use App\Card;
-use Illuminate\Http\Request;
 use Session;
+>>>>>>> 556e7c472eaf976ed41755d35a5939d409521790
 
 class ProductController extends Controller
 {

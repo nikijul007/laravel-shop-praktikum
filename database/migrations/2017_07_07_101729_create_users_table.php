@@ -4,22 +4,21 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductsTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
-     
+     *
      * @return void
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->text('imagePath');
-            $table->string('title');
-            $table->text('description');
-            $table->double('price');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->rememberToken();
         });
     }
 
@@ -30,6 +29,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::drop('users');
     }
 }
