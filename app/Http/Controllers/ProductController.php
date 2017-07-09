@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Session;
 use App\Models\Card;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -19,8 +18,9 @@ class ProductController extends Controller
     public function addToCard(Request $request, $id)
     {
         $product = Product::find($id);
-        $oldCard = Session::has('card') ? Session::get('card') : null;
+        $oldCard = session()->get('card');
         $card = new Card($oldCard);
+        // TODO: Was passiert wenn die Variable $product den Wert null enthaelt?
         $card->add($product, $product->id);
 
         $request->session()->put('card', $card);
@@ -30,10 +30,10 @@ class ProductController extends Controller
 
     public function getCard()
     {
-        if (! Session::has('card')) {
+        $oldCard = session()->get('card');
+        if ($oldCard === null) {
             return view('shop.shoppingCard', ['products' => null]);
         }
-        $oldCard = Session::get('card');
         $card = new Card($oldCard);
 
         return view('shop.shoppingCard', ['products' => $card->items, 'totalPrice' => $card->totalPrice]);
