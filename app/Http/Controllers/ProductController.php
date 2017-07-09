@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
-use App\Card;
-use Illuminate\Http\Request;
 use Session;
+use App\Card;
+use App\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -15,26 +15,27 @@ class ProductController extends Controller
 
         return view('shop/index', ['products' => $products]);
     }
+
     public function addToCard(Request $request, $id)
     {
         $product = Product::find($id);
-        $oldCard= Session::has('card') ? Session::get('card') : null;
+        $oldCard = Session::has('card') ? Session::get('card') : null;
         $card = new Card($oldCard);
         $card->add($product, $product->id);
-        
+
         $request->session()->put('card', $card);
+
         return redirect()->route('product.index');
-        
     }
-    public function getCard(){
-        if(!Session::has('card')){
-           return view('shop.shoppingCard', ['products' => null]); 
+
+    public function getCard()
+    {
+        if (! Session::has('card')) {
+            return view('shop.shoppingCard', ['products' => null]);
         }
-        $oldCard =Session::get('card');
+        $oldCard = Session::get('card');
         $card = new Card($oldCard);
-        return view('shop.shoppingCard', ['products'=>$card->items, 'totalPrice'=>$card->totalPrice]);
-        
+
+        return view('shop.shoppingCard', ['products' => $card->items, 'totalPrice' => $card->totalPrice]);
     }
-    
-    
-    }
+}
