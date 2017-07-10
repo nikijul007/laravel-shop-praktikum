@@ -35,7 +35,7 @@ Shopping Card
     <br>
     <div class="row">
         <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-            <button type="button" class="btn btn-success">Checkout</button>
+            <a href="{{route('checkout')}}" type="button" class="btn btn-success">Checkout</a>
         </div>       
     </div>
     @else
@@ -46,3 +46,4 @@ Shopping Card
     </div>
     @endif
 @endsection
+

@@ -20,11 +20,30 @@ Route::get('/add-to-card/{id}', [
     'as' => 'product.addToCard',
 ]);
 
+Route::get('/reduceby1/{id}', [
+    'uses' => 'ProductController@ ',
+    'as' => 'product.reduce1',
+]);
+Route::get('/reduceall/{id}', [
+    'uses' => 'ProductController@ ',
+    'as' => 'product.reduceall',
+]);
+
+
  Route::get('/shoppingCard', [
    'uses' => 'ProductController@getCard',
     'as' => 'product.shoppingCard',
 ]);
 
+  Route::get('/checkout', [
+      'uses'=> 'ProductController@getCheckout',
+      'as'=> 'checkout'
+  ]);
+  Route::post('/checkout', [
+      'uses'=> 'ProductController@postCheckout',
+      'as'=> 'checkout'
+  ]);
+  
 Route::group([
     'prefix' => 'users',
     'as' => 'users.',

@@ -31,4 +31,33 @@ class Card
         $this->totalQty++;
         $this->totalPrice += $item->price;
     }
+    
+    /*public function reduceBy1($item, $id)
+    {
+       if ($this->items) {
+            if (array_key_exists($id, $this->items)) {
+                $storedItem = $this->items[$id];
+            }
+        }
+        $storedItem['qty']--;
+        $storedItem['price'] = $item->price * $storedItem['qty'];
+        $this->items[$id] = $storedItem;
+        $this->totalQty--;
+        $this->totalPrice -= $item->price;
+        
+    }
+    
+    public function reduceAll($item, $id)
+    {
+       if ($this->items) {
+            if (array_key_exists($id, $this->items)) {
+                $storedItem = $this->items[$id];
+            }
+        }
+        $storedItem['qty']= 0;
+        $storedItem['price'] = $item->price * $storedItem['qty'];
+        $this->items[$id] = $storedItem;
+        $this->totalQty = 0;
+        $this->totalPrice = $item->price; 
+    }*/
 }
