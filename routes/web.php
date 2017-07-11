@@ -20,11 +20,36 @@ Route::get('/add-to-card/{id}', [
     'as' => 'product.addToCard',
 ]);
 
+Route::get('/reduceby1/{id}', [
+    'uses' => 'ProductController@remove1',
+    'as' => 'product.reduceOne',
+]);
+Route::get('/reduceall/{id}', [
+    'uses' => 'ProductController@removeAll',
+    'as' => 'product.reduceall',
+]);
+
+Route::get('/deleteCard', [
+    'uses' => 'ProductController@deleteCard',
+    'as'=> 'product.deleteCard',
+]);
+
+
  Route::get('/shoppingCard', [
    'uses' => 'ProductController@getCard',
     'as' => 'product.shoppingCard',
 ]);
 
+  Route::get('/checkout', [
+      'uses'=> 'ProductController@getCheckout',
+      'as'=> 'checkout'
+  ]);
+  Route::post('/checkout', [
+      'uses'=> 'ProductController@postCheckout',
+      'as'=> 'checkout',
+      'middleware' => 'auth',
+  ]);
+  
 Route::group([
     'prefix' => 'users',
     'as' => 'users.',
