@@ -5,9 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class Authenticate 
+class Authenticate
 {
-
     /**
      * Handle an incoming request.
      *
@@ -16,7 +15,7 @@ class Authenticate
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null) 
+    public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->guest()) {
             //            return redirect()->guest('users.signin');
@@ -27,5 +26,4 @@ class Authenticate
 
         return $next($request);
     }
-
 }
