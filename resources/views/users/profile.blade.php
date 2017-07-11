@@ -5,11 +5,34 @@ User Profile
 
 @section('inhalt')
 <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-
-        <h1>User Profile</h1>
-        
+    <div class="col-md-8 col-md-offset-2">
+        <div class='weißeSchrift'>
+            <h1>User Profile</h1>
+            <hr>
+            <h2>Your Orders</h2>
+        </div>
+        @foreach($orders as $order)
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <ul class="list-group">
+                    @foreach($order->card->items as $item)
+                    <li class="list-group-item">
+                        <span class="badge">{{ number_format($item['price'], 2, ',', '.' ) }} €</span>
+                         
+                           {{ $item['item']['title'] }} | {{ $item['qty'] }} Units
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+            <div class="panel-footer">
+                <strong>Total Price: {{ number_format($order->card->totalPrice, 2, ',', '.' ) }} €</strong>
+            </div>
+        </div>
+        @endforeach
     </div>   
 </div>
 @endsection
 
+@section('delAccount')
+<li><a href="{{route('users.logout')}}"><i class="fa fa-ban" aria-hidden="true"></i>Delete Account</a></li>
+@endsection
