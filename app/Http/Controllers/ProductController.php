@@ -24,13 +24,31 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $oldCard = session()->get('card');
+        $this->validate($request, [
+            'anzahl' => 'integer|required|min:1',
+        ]);
+        
         $card = new Card($oldCard);
         // TODO: Was passiert wenn die Variable $product den Wert null enthaelt?
-        $card->add($product, $product->id);
-
+        
+        $card->anzahl = $request->input('anzahl');
+        $card->add($product, $product->id, $card->anzahl);
+        
         $request->session()->put('card', $card);
 
         return redirect()->route('product.index');
+    }
+    
+    public function addOne(Request $request, $id) 
+    {
+        $product = Product::find($id);
+        $oldCard = session()->get('card');
+        $card = new Card($oldCard);
+        // TODO: Was passiert wenn die Variable $product den Wert null enthaelt?
+        $card->addOne($product, $product->id);
+        $request->session()->put('card', $card);
+        return redirect()->route('product.shoppingCard');
+        
     }
 
     public function remove1(Request $request, $id) 
@@ -128,9 +146,11 @@ class ProductController extends Controller
         $card = session()->forget('card');
         $products = Product::all();
 
-        return view('shop/index', ['products' => $products, 'success' => 'Successfuly purchased products!']);
+        return view('shop.index', ['products' => $products, 'success' => 'Successfuly purchased products!']);
 
 //        return redirect()->route('product.index')->with('success', 'Successfuly purchased products!');
     }
+    
+    
 
 }

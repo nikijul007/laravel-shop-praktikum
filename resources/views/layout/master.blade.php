@@ -11,7 +11,7 @@
         @yield('style')
 
     </head>
-    <body>
+    <body background="{{URL::asset('img/abstract-20650.jpg')}}">
         @include('partials.header')
 
 
