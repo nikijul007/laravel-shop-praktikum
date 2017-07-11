@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{route('product.index')}}"><i class="fa fa-snapchat-square" aria-hidden="true"></i> Neu</a>
+            <a class="navbar-brand" href="{{route('product.index')}}"><i class="fa fa-home" aria-hidden="true"></i> Shop</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

@@ -40,8 +40,8 @@ Sign In
         
             
             <button formmethod="post" formaction="{{route('product.index')}}" class="pull-right">Go to Shop</button>
-        </form
-      
+        </form>
+        <p>Don´t have an account? Check <a href="{{ route('users.signup')}}">Sign Up</a> </p>
         
         
     </div>   

@@ -18,8 +18,8 @@ Shopping Card
                         <button type="button" class="btn btn-primary btn-xs dropdown-toggle" 
                                 data-toggle="dropdown">Action<span class="caret"></span> </button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Reduce by 1</a></li>
-                                    <li><a href="#">Reduce all</a></li>
+                                    <li><a href="{{ route('product.reduceOne', ['id' => $product['item']['id']]) }}">Reduce by 1</a></li>
+                                    <li><a href="{{ route('product.reduceall', ['id' => $product['item']['id']]) }}">Reduce all</a></li>
                                 </ul>
                     </div>
                 </li>
@@ -36,7 +36,9 @@ Shopping Card
     <div class="row">
         <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
             <a href="{{route('checkout')}}" type="button" class="btn btn-success">Checkout</a>
-        </div>       
+        
+            <a href="{{ route('product.deleteCard')}}" type="button" class="btn btn-danger pull-right">Alles löschen</a>
+        </div>
     </div>
     @else
     <div class="row">

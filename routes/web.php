@@ -21,12 +21,17 @@ Route::get('/add-to-card/{id}', [
 ]);
 
 Route::get('/reduceby1/{id}', [
-    'uses' => 'ProductController@ ',
-    'as' => 'product.reduce1',
+    'uses' => 'ProductController@remove1',
+    'as' => 'product.reduceOne',
 ]);
 Route::get('/reduceall/{id}', [
-    'uses' => 'ProductController@ ',
+    'uses' => 'ProductController@removeAll',
     'as' => 'product.reduceall',
+]);
+
+Route::get('/deleteCard', [
+    'uses' => 'ProductController@deleteCard',
+    'as'=> 'product.deleteCard',
 ]);
 
 
@@ -41,7 +46,8 @@ Route::get('/reduceall/{id}', [
   ]);
   Route::post('/checkout', [
       'uses'=> 'ProductController@postCheckout',
-      'as'=> 'checkout'
+      'as'=> 'checkout',
+      'middleware' => 'auth',
   ]);
   
 Route::group([

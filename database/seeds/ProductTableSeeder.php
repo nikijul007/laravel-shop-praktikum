@@ -59,7 +59,7 @@ class ProductTableSeeder extends Seeder {
                 [
             'imagePath' => 'https://t4.ftcdn.net/jpg/00/41/29/51/500_F_41295160_1C7cHekyhe0RleZwhFSbR93x9aPephKg.jpg',
             'title' => 'Teuer',
-            'description' => 'Eine "kleine" Spende für mich xD',
+            'description' => 'Eine "kleine" Spende für mich, da es dies das beste Kaufportal ist.xD Heute teuer, morgen billig.',
             'price' => 999999.99,
         ]);
         $product->save();

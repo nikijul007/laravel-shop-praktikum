@@ -8,24 +8,26 @@ Checkout
     <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
         <h1>Checkout</h1>
         <h4>Your Total: ${{ number_format($total, 2, ',', '.' ) }} €</h4>
+
         <div id="charge-error" class="alert alert-danger" {{!Session::has('error') ? 'hidden' : ''}}>
             {{Session::get('error')}}
         </div>
+
         <form action="{{route('checkout')}}" method="post" id="checkout-form">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" id='name' class="form-control" required>
+                        <input type="text" id='name' class="form-control" name="name" required>
                     </div>
                 </div>
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="address">Adresse</label>
-                        <input type="text" id='address' class="form-control" required>
+                        <input type="text" id='address' class="form-control" name="address" required>
                     </div>
+                    <hr>
                 </div>
-                <hr>
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="card-name">Card Holder Name</label>
