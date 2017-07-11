@@ -31,7 +31,7 @@ class Card
         $this->totalQty++;
         $this->totalPrice += $item->price;
     }
-    
+
     public function reduceBy1($item, $id)
     {
         $storedItem = null;
@@ -41,9 +41,11 @@ class Card
             }
         }
         if ($storedItem === null) {
+            
             return $this;
         }
         if ($storedItem['qty'] == 0) {
+            
             return $this;
         }
         if ($storedItem['qty'] == 1) {
@@ -55,7 +57,7 @@ class Card
             
             return $this;
         }
-        
+
         $storedItem['qty']--;
         $storedItem['price'] = $item->price * $storedItem['qty'];
         $this->items[$id] = $storedItem;
@@ -63,7 +65,7 @@ class Card
         $this->totalPrice -= $item->price;
         
     }
-    
+
     public function reduceAll($item, $id)
     {
         $storedItem = ['qty' => 0, 'price' => $item->price, 'item' => $item];

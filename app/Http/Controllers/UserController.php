@@ -6,14 +6,17 @@ use Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller {
+class UserController extends Controller 
+{
 
     //Sign Up
-    public function getSignup() {
+    public function getSignup() 
+    {
         return view('users.signup');
     }
 
-    public function postSignup(Request $request) {
+    public function postSignup(Request $request) 
+        {
         $this->validate($request, [
             'email' => 'email|required|unique:users',
             'password' => 'required|min:4',
@@ -34,11 +37,13 @@ class UserController extends Controller {
     }
 
     //Sign In
-    public function getSignin() {
+    public function getSignin() 
+    {
         return view('users.signin');
     }
 
-    public function postSignin(Request $request) {
+    public function postSignin(Request $request) 
+    {
         $this->validate($request, [
             'email' => 'email|required',
             'password' => 'required|min:4',
@@ -61,7 +66,8 @@ class UserController extends Controller {
     }
 
     //Profile
-    public function getProfile() {
+    public function getProfile() 
+    {
         $orders= Auth::user()->orders;
         $orders->transform(function($order, $key){
             $order->card = unserialize($order->card);
@@ -71,7 +77,8 @@ class UserController extends Controller {
     }
 
     //Logout
-    public function getLogout() {
+    public function getLogout() 
+    {
         Auth::logout();
 
         return redirect()->route('product.index');

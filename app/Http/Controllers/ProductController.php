@@ -10,15 +10,18 @@ use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller {
+class ProductController extends Controller 
+{
 
-    public function getIndex() {
+    public function getIndex() 
+    {
         $products = Product::all();
 
         return view('shop/index', ['products' => $products]);
     }
 
-    public function addToCard(Request $request, $id) {
+    public function addToCard(Request $request, $id) 
+    {
         $product = Product::find($id);
         $oldCard = session()->get('card');
         $card = new Card($oldCard);
@@ -30,7 +33,8 @@ class ProductController extends Controller {
         return redirect()->route('product.index');
     }
 
-    public function remove1(Request $request, $id) {
+    public function remove1(Request $request, $id) 
+    {
         $product = Product::find($id);
         $oldCard = session()->get('card');
         $card = new Card($oldCard);
@@ -46,7 +50,8 @@ class ProductController extends Controller {
         return redirect()->route('product.shoppingCard');
     }
 
-    public function removeAll(Request $request, $id) {
+    public function removeAll(Request $request, $id) 
+    {
         $product = Product::find($id);
         $oldCard = session()->get('card');
         $card = new Card($oldCard);
@@ -62,7 +67,8 @@ class ProductController extends Controller {
         return redirect()->route('product.shoppingCard');
     }
     
-    public function deleteCard() {
+    public function deleteCard() 
+    {
         $oldCard = session()->get('card');
         
         $card = new Card($oldCard);
@@ -71,7 +77,8 @@ class ProductController extends Controller {
         return view('shop/index', ['products' => $products]);
     }
 
-    public function getCard() {
+    public function getCard() 
+    {
         $oldCard = session()->get('card');
         if ($oldCard === null) {
             return view('shop.shoppingCard', ['products' => null]);
@@ -81,7 +88,8 @@ class ProductController extends Controller {
         return view('shop.shoppingCard', ['products' => $card->items, 'totalPrice' => $card->totalPrice]);
     }
 
-    public function getCheckout() {
+    public function getCheckout() 
+    {
         $oldCard = session()->get('card');
         if ($oldCard === null) {
             return view('shop.shoppingCard', ['products' => null]);
@@ -91,7 +99,8 @@ class ProductController extends Controller {
         return view('shop.checkout', ['total' => $total]);
     }
 
-    public function postCheckout(Request $request) {
+    public function postCheckout(Request $request) 
+    {
         $oldCard = session()->get('card');
         if ($oldCard === null) {
             return redirect()->route('product.shoppingCard');

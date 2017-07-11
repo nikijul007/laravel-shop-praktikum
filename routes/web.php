@@ -41,12 +41,12 @@ Route::get('/deleteCard', [
 ]);
 
   Route::get('/checkout', [
-      'uses'=> 'ProductController@getCheckout',
-      'as'=> 'checkout'
+      'uses' => 'ProductController@getCheckout',
+      'as' => 'checkout'
   ]);
   Route::post('/checkout', [
-      'uses'=> 'ProductController@postCheckout',
-      'as'=> 'checkout',
+      'uses' => 'ProductController@postCheckout',
+      'as' => 'checkout',
       'middleware' => 'auth',
   ]);
   
