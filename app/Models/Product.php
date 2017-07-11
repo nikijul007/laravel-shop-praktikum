@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    
     use SoftDeletes;
 
     /**
@@ -16,6 +15,6 @@ class Product extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
-    
+
     protected $fillable = ['imagePath', 'title', 'description', 'price', 'id'];
 }
