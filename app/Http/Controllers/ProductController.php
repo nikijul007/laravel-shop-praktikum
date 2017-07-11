@@ -9,94 +9,78 @@ use App\Models\Card;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\Product\AddToCardRequest;
 
 class ProductController extends Controller
 {
     public function getIndex()
     {
-        $products = Product::all();
-
-        return view('shop/index', ['products' => $products]);
+        return view('shop/index', ['products' => Product::all()]);
     }
 
-    public function addToCard(Request $request, $id)
+    public function addToCard($id, AddToCardRequest $request)
     {
-        $product = Product::find($id);
-        $oldCard = session()->get('card');
-        $this->validate($request, [
-            'anzahl' => 'integer|required|min:1',
-        ]);
+        $product = Product::findOrFail($id);
+        $amount = (int) $request->input('anzahl');
 
-        $card = new Card($oldCard);
-        // TODO: Was passiert wenn die Variable $product den Wert null enthaelt?
-
-        $card->anzahl = $request->input('anzahl');
-        $card->add($product, $product->id, $card->anzahl);
+        $card = new Card(session()->get('card'));
+        $card->add($product, $amount);
 
         $request->session()->put('card', $card);
 
-        return redirect()->route('product.index');
+        return redirect()->route('product.index')->with('success', $card->message());
     }
 
-    public function addOne(Request $request, $id)
+    public function addOne($id, Request $request)
     {
-        $product = Product::find($id);
-        $oldCard = session()->get('card');
-        $card = new Card($oldCard);
-        // TODO: Was passiert wenn die Variable $product den Wert null enthaelt?
-        $card->addOne($product, $product->id);
+        $product = Product::findOrFail($id);
+        $card = new Card(session()->get('card'));
+
+        $card->addOne($product);
         $request->session()->put('card', $card);
 
-        return redirect()->route('product.shoppingCard');
+        return redirect()->route('product.shoppingCard')->with('success', $card->message());
     }
 
-    public function remove1(Request $request, $id)
+    public function remove1($id, Request $request)
     {
-        $product = Product::find($id);
-        $oldCard = session()->get('card');
-        $card = new Card($oldCard);
-        // TODO: Was passiert wenn die Variable $product den Wert null enthaelt?
-        $card->reduceBy1($product, $product->id);
+        $product = Product::findOrFail($id);
+        $card = new Card(session()->get('card'));
+        $card->reduceAmountOneFrom($product);
 
         if (count($card->items) > 0) {
             $request->session()->put('card', $card);
 
-            return redirect()->route('product.shoppingCard');
+            return redirect()->route('product.shoppingCard')->with('success', $card->message());
         }
 
         $request->session()->forget('card');
 
-        return redirect()->route('product.shoppingCard');
+        return redirect()->route('product.shoppingCard')->with('success', $card->message());
     }
 
     public function removeAll(Request $request, $id)
     {
-        $product = Product::find($id);
-        $oldCard = session()->get('card');
-        $card = new Card($oldCard);
-        // TODO: Was passiert wenn die Variable $product den Wert null enthaelt?
-        $card->reduceAll($product, $product->id);
+        $product = Product::findOrFail($id);
+        $card = new Card(session()->get('card'));
+        $card->reduceAllFrom($product);
 
         if (count($card->items) > 0) {
             $request->session()->put('card', $card);
 
-            return redirect()->route('product.shoppingCard');
+            return redirect()->route('product.shoppingCard')->with('success', $card->message());
         }
 
         $request->session()->forget('card');
 
-        return redirect()->route('product.shoppingCard');
+        return redirect()->route('product.shoppingCard')->with('success', $card->message());
     }
 
     public function deleteCard()
     {
-        $oldCard = session()->get('card');
+        session()->forget('card');
 
-        $card = new Card($oldCard);
-        $card = session()->forget('card');
-        $products = Product::all();
-
-        return view('shop/index', ['products' => $products]);
+        return view('shop/index', ['products' => Product::all()]);
     }
 
     public function getCard()
@@ -117,9 +101,8 @@ class ProductController extends Controller
             return view('shop.shoppingCard', ['products' => null]);
         }
         $card = new Card($oldCard);
-        $total = $card->totalPrice;
 
-        return view('shop.checkout', ['total' => $total]);
+        return view('shop.checkout', ['total' => $card->totalPrice]);
     }
 
     public function postCheckout(Request $request)
@@ -148,11 +131,8 @@ class ProductController extends Controller
         } catch (\Exception $e) {
             return redirect()->route('checkout')->with('error', $e->getMessage());
         }
-        $card = session()->forget('card');
-        $products = Product::all();
+        session()->forget('card');
 
-        return view('shop.index', ['products' => $products, 'success' => 'Successfuly purchased products!']);
-
-//        return redirect()->route('product.index')->with('success', 'Successfuly purchased products!');
+        return view('shop.index', ['products' => Product::all(), 'success' => 'Successfuly purchased products!']);
     }
 }

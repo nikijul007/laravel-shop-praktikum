@@ -26,18 +26,18 @@ class UserController extends Controller
             'password' => bcrypt($request->input('password')),
         ]);
         $user->save();
+
         Auth::login($user);
-        if (session()->has('OldUrl')) {
-            $oldUrl = Session::get('OldUrl');
-            session()->forget('OldUrl');
 
-            return redirect()->to($oldUrl);
+        $oldUrl = session()->get('old_url');
+        if ($oldUrl === null) {
+            return redirect()->route('users.profile');
         }
+        session()->forget('old_url');
 
-        return redirect()->route('users.profile');
+        return redirect()->to($oldUrl);
     }
 
-    //Sign In
     public function getSignin()
     {
         return view('users.signin');
@@ -51,14 +51,13 @@ class UserController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
-            if (session()->has('OldUrl')) {
-                $oldUrl = session()->get('OldUrl');
-                session()->forget('OldUrl');
-
-                return redirect()->to($oldUrl);
+            $oldUrl = session()->get('old_url');
+            if ($oldUrl === null) {
+                return redirect()->route('users.profile');
             }
+            session()->forget('old_url');
 
-            return redirect()->route('users.profile');
+            return redirect()->to($oldUrl);
         }
 
         $customerErrors = [
@@ -68,7 +67,6 @@ class UserController extends Controller
         return view('users.signin')->with(compact('customerErrors'));
     }
 
-    //Profile
     public function getProfile()
     {
         $orders = Auth::user()->orders;
@@ -81,7 +79,6 @@ class UserController extends Controller
         return view('users.profile', ['orders' => $orders]);
     }
 
-    //Logout
     public function getLogout()
     {
         Auth::logout();

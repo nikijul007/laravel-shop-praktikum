@@ -18,8 +18,7 @@ class Authenticate
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->guest()) {
-            //            return redirect()->guest('users.signin');
-            session()->put('OldUrl', $request->url());
+            session()->put('old_url', $request->url());
 
             return redirect()->route('users.signin');
         }
