@@ -6,9 +6,11 @@ User Profile
 @section('inhalt')
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <h1>User Profile</h1>
-        <hr>
-        <h2>Your Orders</h2>
+        <div class='weißeSchrift'>
+            <h1>User Profile</h1>
+            <hr>
+            <h2>Your Orders</h2>
+        </div>
         @foreach($orders as $order)
         <div class="panel panel-default">
             <div class="panel-body">
@@ -31,3 +33,6 @@ User Profile
 </div>
 @endsection
 
+@section('delAccount')
+<li><a href="{{route('users.logout')}}"><i class="fa fa-ban" aria-hidden="true"></i>Delete Account</a></li>
+@endsection

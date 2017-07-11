@@ -15,45 +15,77 @@ Route::get('/', [
 ]);
 Route::get('/start', 'IndexController@index');
 
-Route::get('/add-to-card/{id}', [
-   'uses' => 'ProductController@addToCard',
-    'as' => 'product.addToCard',
+Route::get('/adminsignin', [
+   'uses' => 'AdminController@getSignin', 
+    'as' => 'verwaltung.admin'
 ]);
 
-Route::get('/reduceby1/{id}', [
-    'uses' => 'ProductController@remove1',
-    'as' => 'product.reduceOne',
-]);
-Route::get('/reduceall/{id}', [
-    'uses' => 'ProductController@removeAll',
-    'as' => 'product.reduceall',
+Route::post('/adminsignin', [
+   'uses' => 'AdminController@postSignin', 
+    'as' => 'verwaltung.admin'
 ]);
 
-Route::get('/deleteCard', [
-    'uses' => 'ProductController@deleteCard',
-    'as'=> 'product.deleteCard',
+Route::get('/adminpage', [
+    'uses' => 'AdminController@getAdminpage',
+    'as' => 'verwaltung.adminpage'
 ]);
 
-
- Route::get('/shoppingCard', [
-   'uses' => 'ProductController@getCard',
-    'as' => 'product.shoppingCard',
+Route::get('/change', [
+   'uses' => 'AdminController@update',
+    'as' => 'admin.change'
+    
 ]);
 
-  Route::get('/checkout', [
-      'uses' => 'ProductController@getCheckout',
-      'as' => 'checkout'
-  ]);
-  Route::post('/checkout', [
-      'uses' => 'ProductController@postCheckout',
-      'as' => 'checkout',
-      'middleware' => 'auth',
-  ]);
-  
+Route::group([
+    'prefix' => 'product',
+    'as' => 'product.',
+        ], function() {
+
+    Route::post('/add-to-card/{id}', [
+        'uses' => 'ProductController@addToCard',
+        'as' => 'addToCard',
+    ]);
+
+    Route::get('/addOne/{id}', [
+        'uses' => 'ProductController@addOne',
+        'as' => 'addOne'
+    ]);
+
+    Route::get('/reduceby1/{id}', [
+        'uses' => 'ProductController@remove1',
+        'as' => 'reduceOne',
+    ]);
+    Route::get('/reduceall/{id}', [
+        'uses' => 'ProductController@removeAll',
+        'as' => 'reduceall',
+    ]);
+
+    Route::get('/deleteCard', [
+        'uses' => 'ProductController@deleteCard',
+        'as' => 'deleteCard',
+    ]);
+
+
+    Route::get('/shoppingCard', [
+        'uses' => 'ProductController@getCard',
+        'as' => 'shoppingCard',
+    ]);
+});
+
+Route::get('/checkout', [
+    'uses' => 'ProductController@getCheckout',
+    'as' => 'checkout'
+]);
+Route::post('/checkout', [
+    'uses' => 'ProductController@postCheckout',
+    'as' => 'checkout',
+    'middleware' => 'auth',
+]);
+
 Route::group([
     'prefix' => 'users',
     'as' => 'users.',
-], function () {
+        ], function () {
     Route::group(['middleware' => 'guest'], function () {
         //Sign Up
         Route::get('/signup', [

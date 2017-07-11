@@ -20,16 +20,16 @@ Shopping Card
                                 <ul class="dropdown-menu">
                                     <li><a href="{{ route('product.reduceOne', ['id' => $product['item']['id']]) }}">Reduce by 1</a></li>
                                     <li><a href="{{ route('product.reduceall', ['id' => $product['item']['id']]) }}">Reduce all</a></li>
-                                </ul>
                     </div>
-                </li>
+                <a href="{{ route('product.addOne', ['id' => $product['item']['id']]) }}" class="btn btn-primary btn-xs">Add one</a>
                 @endforeach
-            </ul>   
+            </ul>
+                          
         </div>       
     </div>
     <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-            <strong>Total: {{ number_format($totalPrice, 2, ',', '.' ) }} € </strong>
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3 weißeSchrift">
+            <strong>Total: {{ number_format($totalPrice, 2, ',', '.' ) }} €</strong>
         </div>       
     </div>
     <br>
@@ -41,9 +41,10 @@ Shopping Card
         </div>
     </div>
     @else
-    <div class="row">
+    <div class="row weißeSchrift">
         <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
             <h2>No Items in Card.</h2>
+            <h4>When you would like to shop, click <a href="{{ route('product.index') }}" >here.</a></h4>
         </div>       
     </div>
     @endif

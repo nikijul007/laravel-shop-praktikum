@@ -5,7 +5,7 @@ Checkout
 
 @section('inhalt')
 <div class="row">
-    <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+    <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3 weißeSchrift">
         <h1>Checkout</h1>
         <h4>Your Total: ${{ number_format($total, 2, ',', '.' ) }} €</h4>
 
