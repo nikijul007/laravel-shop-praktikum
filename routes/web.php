@@ -104,7 +104,6 @@ Route::group([
             'as' => 'update',
         ]);
     });
-
 });
 
 Route::group([
