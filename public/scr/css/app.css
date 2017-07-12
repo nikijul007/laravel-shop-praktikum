@@ -2,7 +2,7 @@
     max-height: 150px;
 }
 .thumbnail .description{
-    color: #6600ff;    
+    color: #B831FF;    
 }
 
 .price{
@@ -16,4 +16,7 @@
 
 .schwarzeSchrift {
     color: #000;
+}
+.schwarzeBox {
+    background-color: #000;
 }

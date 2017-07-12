@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class AdminController extends Controller
 {
@@ -18,12 +19,13 @@ class AdminController extends Controller
             'password' => 'required|min:4',
         ]);
 
-        return redirect()->route('verwaltung.adminpage');
+
+        return redirect()->route('admin.products');
     }
 
-    public function getAdminpage()
+    public function getAdminCreate()
     {
-        return view('verwaltung.adminpage');
+        return view('verwaltung.admin-create');
     }
 
     public function delete($id)
@@ -31,11 +33,5 @@ class AdminController extends Controller
         Product::findOrFail($id)->delete();
     }
 
-    public function update($id, Request $request)
-    {
-        $product = Product::findOrFail($id);
-        $product->fill($request->input());
-
-        return view('verwaltung.change');
-    }
+    
 }
