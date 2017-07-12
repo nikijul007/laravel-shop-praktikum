@@ -8,38 +8,38 @@ use App\Http\Requests\Product\UpdateRequest;
 
 class AdminProductController extends Controller
 {
-    public function getCreate(Request $request)
+    public function index()
     {
-        return view('verwaltung.vorhandeneProdukte', ['products' => Product::all()]);
+        return view('admin.products.index', ['products' => Product::all()]);
     }
 
-    public function postCreate(UpdateRequest $request)
+    public function create()
+    {
+        return view('admin.products.create');
+    }
+
+    public function store(UpdateRequest $request)
     {
         $product = new Product();
         $product->fill($request->input());
         $product->save();
 
-        return view('verwaltung.vorhandeneProdukte', ['products' => Product::all()]);
+        return view('admin.products.index', ['products' => Product::all()]);
     }
 
-    public function getChange($id)
+    public function edit($id)
     {
         $product = Product::findOrFail($id);
 
-        return view('verwaltung.admin-change', ['product' => $product]);
+        return view('admin.products.edit', ['product' => $product]);
     }
 
-    public function postChange($id, UpdateRequest $request)
+    public function update($id, UpdateRequest $request)
     {
         $product = Product::findOrFail($id);
         $product->fill($request->input());
         $product->save();
 
-        return view('verwaltung.vorhandeneProdukte', ['products' => Product::all()]);
-    }
-
-    public function getProducts()
-    {
-        return view('verwaltung.vorhandeneProdukte', ['products' => Product::all()]);
+        return view('admin.products.index', ['products' => Product::all()]);
     }
 }

@@ -16,7 +16,7 @@ class UpdateRequest extends Request
     public function attributes()
     {
         return [
-            'imagePath' => 'Bild Pfad',
+            'imagePath' => trans('messages.eloquent.product.attributes.image_path'), // TODO input namen in snake_case
         ];
     }
 }

@@ -18,7 +18,7 @@ User Profile
                     @foreach($order->card->items as $item)
                     <li class="list-group-item">
                         <span class="badge">{{ number_format($item['price'], 2, ',', '.' ) }} €</span>
-                         
+
                            {{ $item['item']['title'] }} | {{ $item['qty'] }} Units
                     </li>
                     @endforeach
@@ -29,14 +29,6 @@ User Profile
             </div>
         </div>
         @endforeach
-    </div>   
+    </div>
 </div>
-@endsection
-
-@section('delAccount')
-<li><a href="{{route('users.logout')}}"><i class="fa fa-ban" aria-hidden="true"></i>Delete Account</a></li>
-@endsection
-
-@section('admin')
- <li><a href="{{ route('verwaltung.admin') }}"><i class="fa fa-lock" aria-hidden="true"></i> Admin</a></li>
 @endsection
