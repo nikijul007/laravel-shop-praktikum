@@ -37,12 +37,12 @@ Route::post('/adminpage', [
 
 Route::get('/adminpage1/{id}', [
     'uses' => 'AdminProductController@getChange',
-    'as' => 'admin.changeProduct'
+    'as' => 'admin.changeProduct',
 ]);
 
 Route::post('/adminpage1/{id}', [
     'uses' => 'AdminProductController@postChange',
-    'as' => 'admin.changeProduct'
+    'as' => 'admin.changeProduct',
 ]);
 
 Route::get('/products', [
@@ -81,7 +81,7 @@ Route::group([
             Route::get('/shoppingCard', [
         'uses' => 'ProductController@getCard',
         'as' => 'shoppingCard',
-        
+
     ]);
         });
 
