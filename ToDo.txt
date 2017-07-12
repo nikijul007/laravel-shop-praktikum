@@ -1,0 +1,2 @@
+Admin einrichten,
+Produkte löschen über Interface

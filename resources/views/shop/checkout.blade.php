@@ -18,26 +18,33 @@ Checkout
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" id='name' class="form-control" name="name" required>
+                        <input type="text" id='name' class="form-control" name="name" placeholder="Name" required>
                     </div>
                 </div>
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="address">Adresse</label>
-                        <input type="text" id='address' class="form-control" name="address" required>
+                        <input type="text" id='address' class="form-control" name="address" placeholder="Address" required>
+                    </div>
+                    <hr>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" id='description' class="form-control" name="description" placeholder="Descripe your order!" required>
                     </div>
                     <hr>
                 </div>
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="card-name">Card Holder Name</label>
-                        <input type="text" id='card-name' class="form-control" required>
+                        <input type="text" id='card-name' class="form-control" placeholder="Name" required>
                     </div>
                 </div>
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="card-number">Credit Card Number</label>
-                        <input type="text" id='card-number' class="form-control" required>
+                        <input type="text" id='card-number' class="form-control" placeholder="4242 4242 4242 4242" required>
                     </div>
                 </div>
 
@@ -45,13 +52,13 @@ Checkout
                     <div class="col-xs-6">
                         <div class="form-group">
                             <label for="card-expiry-month">Expiration Month</label>
-                            <input type="text" id='card-expiry-month' class="form-control" required>
+                            <input type="text" id='card-expiry-month' class="form-control" placeholder="12" required>
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-group">
                             <label for="card-expiry-year">Expiration Year</label>
-                            <input type="text" id='card-expiry-year' class="form-control" required>
+                            <input type="text" id='card-expiry-year' class="form-control" placeholder="2020" required>
                         </div>
                     </div>
                 </div>
