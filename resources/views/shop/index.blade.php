@@ -31,13 +31,15 @@ Shop
 <div class="row">
     @foreach($productChunk as $product)
     <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img src="{{$product->imagePath}}" alt="..."
+        <div class="thumbnail schwarzeBox">
+            <img src="{{$product->imagePath}}" alt="{{ URL::asset('img/tabBild.png') }}"
                  class='img-responsive'>
             <div class="caption">
-                <h3>{{$product->title}}</h3>
+                <div class="weißeSchrift">
+                    <h3>{{$product->title}}</h3>
+                </div>
                 <p class="description">{{$product->description}}</p>
-                <div class="pull-left price"> {{ number_format($product->price, 2, ',', '.' ) }} €</div>
+                <div class="pull-left price weißeSchrift"> {{ number_format($product->price, 2, ',', '.' ) }} €</div>
                 <div class="clearfix">
                     <form action="{{ route('product.addToCard', ['id' => $product->id]) }}" method="post">
                         <input type="text" id="anzahl" name="anzahl" class="form-control small">
@@ -48,7 +50,7 @@ Shop
             </div>
         </div>
     </div>
-    @endforeach
+    @endforeach 
 </div>
 @endforeach
 

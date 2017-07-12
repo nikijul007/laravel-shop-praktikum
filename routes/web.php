@@ -25,15 +25,29 @@ Route::post('/adminsignin', [
     'as' => 'verwaltung.admin',
 ]);
 
-Route::get('/adminpage', [
-    'uses' => 'AdminController@getAdminpage',
-    'as' => 'verwaltung.adminpage',
+Route::get('/createProduct', [
+    'uses' => 'AdminController@getAdminCreate',
+    'as' => 'admin.createProduct',
 ]);
 
-Route::get('/change', [
-   'uses' => 'AdminController@update',
-    'as' => 'admin.change',
+Route::post('/adminpage', [
+   'uses' => 'AdminProductController@postCreate',
+    'as' => 'admin.create',
+]);
 
+Route::get('/adminpage1/{id}', [
+    'uses' => 'AdminProductController@getChange',
+    'as' => 'admin.changeProduct'
+]);
+
+Route::post('/adminpage1/{id}', [
+    'uses' => 'AdminProductController@postChange',
+    'as' => 'admin.changeProduct'
+]);
+
+Route::get('/products', [
+   'uses' => 'AdminProductController@getProducts',
+    'as' => 'admin.products',
 ]);
 
 Route::group([
@@ -67,12 +81,14 @@ Route::group([
             Route::get('/shoppingCard', [
         'uses' => 'ProductController@getCard',
         'as' => 'shoppingCard',
+        
     ]);
         });
 
 Route::get('/checkout', [
     'uses' => 'ProductController@getCheckout',
     'as' => 'checkout',
+    'middleware' => 'auth',
 ]);
 Route::post('/checkout', [
     'uses' => 'ProductController@postCheckout',

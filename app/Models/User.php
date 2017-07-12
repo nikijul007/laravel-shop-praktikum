@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
+use Silber\Bouncer\Database\HasRolesAndAbilities;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasRolesAndAbilities;
 
     /**
      * The attributes that are mass assignable.

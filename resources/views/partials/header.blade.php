@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-inverse">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display  -->
         <div class="navbar-header">
@@ -9,9 +9,9 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{{route('product.index')}}"><i class="fa fa-home" aria-hidden="true"></i> Shop</a>
-            <a class="navbar-brand" href="{{ route('verwaltung.admin') }}">  Admin</a>
         </div>
-
+        
+       
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
@@ -21,12 +21,14 @@
                     </a>
                 </li>
                 @yield('delAccount')
+                @yield('Adminpage')
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-user-circle" aria-hidden="true"></i> Your Account <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         @if(Auth::check())
-                        <li><a href="{{route('users.profile')}}"><i class="fa fa-user-circle-o" aria-hidden="true"></i></i> User Profile</a></li>
+                        <li><a href="{{route('users.profile')}}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> User Profile</a></li>
+                        @yield('admin')
                         <li role="separator" class="divider"></li>
                         <li><a href="{{route('users.logout')}}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
                         @else
