@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -19,7 +19,6 @@ class AdminController extends Controller
             'password' => 'required|min:4',
         ]);
 
-
         return redirect()->route('admin.products');
     }
 
@@ -32,6 +31,4 @@ class AdminController extends Controller
     {
         Product::findOrFail($id)->delete();
     }
-
-    
 }

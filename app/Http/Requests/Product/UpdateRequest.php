@@ -9,7 +9,7 @@ class UpdateRequest extends Request
     public function rules()
     {
         return [
-            'imagePath' => 'required|url', 
+            'imagePath' => 'required|url',
         ];
     }
 
