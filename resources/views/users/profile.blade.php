@@ -36,3 +36,7 @@ User Profile
 @section('delAccount')
 <li><a href="{{route('users.logout')}}"><i class="fa fa-ban" aria-hidden="true"></i>Delete Account</a></li>
 @endsection
+
+@section('admin')
+ <li><a href="{{ route('verwaltung.admin') }}"><i class="fa fa-lock" aria-hidden="true"></i> Admin</a></li>
+@endsection

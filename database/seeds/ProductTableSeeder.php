@@ -116,7 +116,7 @@ class ProductTableSeeder extends Seeder {
             'imagePath' => 'https://t4.ftcdn.net/jpg/00/41/29/51/500_F_41295160_1C7cHekyhe0RleZwhFSbR93x9aPephKg.jpg',
             'title' => 'Teuer',
             'description' => 'Und noch eine Spende. Ich brauche umbedingt Geld...',
-            'price' => 0.99,
+            'price' => 4.99,
         ]);
         $product->save();
 
@@ -126,7 +126,7 @@ class ProductTableSeeder extends Seeder {
             'imagePath' => 'https://t4.ftcdn.net/jpg/00/41/29/51/500_F_41295160_1C7cHekyhe0RleZwhFSbR93x9aPephKg.jpg',
             'title' => 'Teuer',
             'description' => 'Und noch eine Spende. Brauche das Geld wirklich dringend.',
-            'price' => 0.99,
+            'price' => 9.99,
         ]);
         $product->save();
 
