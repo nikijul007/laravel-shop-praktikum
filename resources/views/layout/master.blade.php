@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>@yield('titel')</title>
     <link rel="icon" href="tabBild2.ico">
-    <link rel="icon" href="{{ URL::asset('img/tabBild.png') }}">
+    <link rel="icon" href="{{ URL::asset('img/AceOfSpades.jpg') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}">
     <link rel='stylesheet' href="{{ URL::to('scr/css/app.css') }}">
     <script src="{{ URL::asset('js/fontawesome.js')}}"></script>

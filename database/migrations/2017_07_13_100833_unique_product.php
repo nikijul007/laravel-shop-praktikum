@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateTableProduct extends Migration {
+class UniqueProduct extends Migration {
 
     /**
      * Run the migrations.
@@ -12,10 +12,10 @@ class UpdateTableProduct extends Migration {
      * @return void
      */
     public function up() {
-
-        if (!Schema::hasColumn('products', 'deleted_at')) {
-            Schema::table('products', function (Blueprint $table) {
-                $table->softDeletes();
+            if (Schema::hasColumn('products', 'unique_product' )) {
+            
+                Schema::table('products', function (Blueprint $table) {
+                $table->unique(['title', 'desciption'], 'unique_product');
             });
         }
     }

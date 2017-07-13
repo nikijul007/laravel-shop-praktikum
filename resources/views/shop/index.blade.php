@@ -32,7 +32,7 @@ Shop
     @foreach($productChunk as $product)
     <div class="col-sm-6 col-md-4">
         <div class="thumbnail schwarzeBox">
-            <img src="{{$product->imagePath}}" title=""
+            <img src="{{$product->image_path}}" title=""
                  class='img-responsive weißeSchrift'>
             <div class="caption">
                 <div class="weißeSchrift">

@@ -27,6 +27,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="{{ route('admin.products.create') }}"><i class="fa fa-plus" aria-hidden="true"></i> Neues Produkt </a></li>
                             <li><a href="{{ route('admin.products.index') }}"><i class="fa fa-plus-circle" aria-hidden="true"></i> Vorhandene Produkte </a></li>
+                            <li><a href="{{ route('admin.products.geloescht') }}"><i class="fa fa-ban" aria-hidden="true"></i> Gelöschte Produkte </a></li>
                         </ul>
                     </li>
                 @endif

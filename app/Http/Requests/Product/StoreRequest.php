@@ -4,7 +4,7 @@ namespace App\Http\Requests\Product;
 
 use App\Http\Requests\Request;
 
-class UpdateRequest extends Request
+class StoreRequest extends Request
 {
     public function rules()
     {

@@ -44,7 +44,7 @@ Checkout
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="card-number">Credit Card Number</label>
-                        <input type="text" id='card-number' class="form-control" placeholder="4242 4242 4242 4242" required>
+                        <input type="text" id='card-number' class="form-control" placeholder="4242 4242 4242 4242" value="4242 4242 4242 4242" required>
                     </div>
                 </div>
 

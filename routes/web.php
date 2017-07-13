@@ -85,7 +85,7 @@ Route::group([
             'as' => 'index',
         ]);
         Route::get('/erstellen', [
-            'uses' => 'AdminProductsController@create',
+            'uses' => 'AdminProductController@create',
             'as' => 'create',
         ]);
 
@@ -102,6 +102,32 @@ Route::group([
         Route::post('/editieren/{id}', [
             'uses' => 'AdminProductController@update',
             'as' => 'update',
+        ]);
+        
+        Route::get('/löschen/{id}', [
+           'uses' => 'AdminProductController@getDelete',
+           'as' => 'delete'
+        ]);
+       
+        
+        Route::post('/löschen/{id}', [
+           'uses' => 'AdminProductController@postDelete',
+           'as' => 'del'
+        ]);
+        
+        Route::get('/gelöschte', [
+            'uses' => 'AdminProductController@geloescht',
+            'as' => 'geloescht'
+        ]);
+        
+        Route::get('/wiederherstellen/{id}', [
+           'uses' => 'AdminProductController@restore',
+            'as' => 'restore'
+        ]);
+        
+        Route::post('/wiederherstellen/{id}', [
+           'uses' => 'AdminProductController@restored',
+            'as' => 'restored'
         ]);
     });
 });
