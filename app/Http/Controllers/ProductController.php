@@ -17,6 +17,17 @@ class ProductController extends Controller
     {
         return view('shop/index', ['products' => Product::all()]);
     }
+    
+    public function postIndex(Request $request)
+    {
+        $eingabe = $request->input('search');
+        $products=Product::where('title', 'like', '%' . $eingabe . '%')
+                ->orwhere('description', 'like', '%'. $eingabe . '%')
+                ->get();
+        //$products = Product::where('description', $request->input('search'))->get();
+        
+        return view('shop/index', ['products' => $products]);
+    }
 
     public function addToCard($id, AddToCardRequest $request)
     {

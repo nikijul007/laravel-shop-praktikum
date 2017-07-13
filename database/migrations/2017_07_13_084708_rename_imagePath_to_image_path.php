@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateTableProduct extends Migration {
+class RenameImagePathToImagePath extends Migration {
 
     /**
      * Run the migrations.
@@ -12,10 +12,9 @@ class UpdateTableProduct extends Migration {
      * @return void
      */
     public function up() {
-
-        if (!Schema::hasColumn('products', 'deleted_at')) {
+        if (Schema::hasColumn('products', 'imagePath')) {
             Schema::table('products', function (Blueprint $table) {
-                $table->softDeletes();
+                $table->renameColumn('imagePath', 'image_path');
             });
         }
     }

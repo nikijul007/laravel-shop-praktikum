@@ -4,6 +4,8 @@ Checkout
 @endsection
 
 @section('inhalt')
+<div>
+    <br> <br> <br> <br> 
 <div class="row">
     <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3 weißeSchrift">
         <h1>Checkout</h1>
@@ -44,7 +46,7 @@ Checkout
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="card-number">Credit Card Number</label>
-                        <input type="text" id='card-number' class="form-control" placeholder="4242 4242 4242 4242" required>
+                        <input type="text" id='card-number' class="form-control" placeholder="4242 4242 4242 4242" value="4242 4242 4242 4242" required>
                     </div>
                 </div>
 

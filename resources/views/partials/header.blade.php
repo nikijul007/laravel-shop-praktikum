@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-inverse">
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display  -->
         <div class="navbar-header">
@@ -9,6 +9,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{{route('product.index')}}"><i class="fa fa-home" aria-hidden="true"></i> Shop</a>
+            @yield('suchleiste')
         </div>
 
 
@@ -27,6 +28,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="{{ route('admin.products.create') }}"><i class="fa fa-plus" aria-hidden="true"></i> Neues Produkt </a></li>
                             <li><a href="{{ route('admin.products.index') }}"><i class="fa fa-plus-circle" aria-hidden="true"></i> Vorhandene Produkte </a></li>
+                            <li><a href="{{ route('admin.products.geloescht') }}"><i class="fa fa-ban" aria-hidden="true"></i> Gelöschte Produkte </a></li>
                         </ul>
                     </li>
                 @endif

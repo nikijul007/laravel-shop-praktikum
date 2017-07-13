@@ -1,17 +1,19 @@
 @extends('layout.master')
 
 @section('titel')
-Admin - Produkte
+Admin - Gelöschte Produkte
 @endsection
 
 @section('inhalt')
 <div>
-    <br> <br> <br> 
+    <br> <br> <br> <br> <br> 
 </div>
 <div class="col-md-4 col-md-offset-4 weißeSchrift">
-    <h1>Vorhandene Produkte</h1>
+    <h1>Gelöschte Produkte</h1>
 
 </div>
+
+
 @foreach($products->chunk(3) as $productChunk)
 <div class="row">
     <br> <br> <br> <br>
@@ -28,8 +30,10 @@ Admin - Produkte
                 <p class="description">{{$product->description}}</p>
                 <div class="pull-left price weißeSchrift"> {{ number_format($product->price, 2, ',', '.' ) }} €</div>
                 <div class="clearfix">
-                    <a href="{{ route('admin.products.edit', ['id' => $product->id]) }}" class="btn btn-info pull-right">Edit Product</a>
-                    <a href="{{ route('admin.products.delete', ['id' => $product->id]) }}" class="btn btn-danger pull-right">Delete Product</a>
+                    <form action="{{ route('admin.products.restore', ['id' => $product->id]) }}" method="post" id='product-delete'>
+                        <button type="submit" class="btn btn-success pull-right">Restore Product</button>
+                        {{csrf_field()}}
+                    </form>
                 </div>
             </div>
         </div>
@@ -37,4 +41,6 @@ Admin - Produkte
     @endforeach
 </div>
 @endforeach
+
+
 @endsection
