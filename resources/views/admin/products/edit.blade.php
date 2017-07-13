@@ -5,6 +5,9 @@ Admin - Change
 @endsection
 
 @section('inhalt')
+<div>
+    <br> <br> <br> <br> <br>
+</div>
 <form action="{{ route('admin.products.update', ['id' => $product->id]) }}" method="post" id="product-change">
     <div class="row weißeSchrift">
         <div class="col-xs-12">

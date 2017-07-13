@@ -5,6 +5,9 @@ Admin - Produkte
 @endsection
 
 @section('inhalt')
+<div>
+    <br> <br> <br> 
+</div>
 <div class="col-md-4 col-md-offset-4 weißeSchrift">
     <h1>Vorhandene Produkte</h1>
 

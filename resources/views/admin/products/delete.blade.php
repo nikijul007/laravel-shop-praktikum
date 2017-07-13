@@ -5,7 +5,9 @@ Admin - Change
 @endsection
 
 @section('inhalt')
-
+<div>
+    <br> <br> <br> <br> <br> 
+</div>
 <div class="col-md-4 col-md-offset-4 weißeSchrift schwarzeBox">
     <h2>Are you sure to delete the Product: </h2>
     <div class="thumbnail schwarzeBox">  

@@ -3,6 +3,9 @@
 Admin - Create
 @endsection
 @section('inhalt')
+<div>
+    <br> <br> <br> <br> <br> 
+</div>
 <form action="{{route('admin.products.store')}}" method="post" id="product-create">
     <div class="row weißeSchrift">
         <div class="col-xs-12">

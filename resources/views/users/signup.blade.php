@@ -4,8 +4,11 @@ Sign Up
 @endsection
 
 @section('inhalt')
+<div>
+    <br> <br> <br> <br> 
+</div>
 <div class="row weißeSchrift">
-    <div class="col-md-4 col-md-offset-4">
+    <div class="col-md-5 col-md-offset-4">
 
         <h1>Sign Up</h1>
         @if(count($errors)>0)
@@ -18,6 +21,12 @@ Sign Up
 
 
         <form action="{{route('users.signup')}}" method="post">
+             <div class="form-group">
+                <label for="name" ><i class="fa fa-user-plus" aria-hidden="true"></i> Name</label>  
+                <input type="text" id="name" name="name" class="form-group-sm form-control">
+                <input type="text" id='nachname' name='nachname' class="form-group-sm form-control">
+            </div> 
+            
             <div class="form-group">
                 <label for="email"><i class="fa fa-envelope" aria-hidden="true"></i> E-mail</label>  
                 <input type="text" id="email" name="email" class="form-control">

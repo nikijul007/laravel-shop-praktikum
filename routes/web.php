@@ -15,15 +15,12 @@ Route::get('/', [
 ]);
 Route::get('/start', 'IndexController@index');
 
-Route::get('/adminsignin', [
-    'uses' => 'AdminController@getSignin',
-    'as' => 'admin.signin',
+Route::post('/', [
+    'uses' => 'ProductController@postIndex',
+    'as' => 'product.index',
 ]);
 
-Route::post('/adminsignin', [
-    'uses' => 'AdminController@postSignin',
-    'as' => 'admin.signin',
-]);
+
 
 Route::group([
     'prefix' => 'product',

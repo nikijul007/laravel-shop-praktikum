@@ -4,6 +4,8 @@ Checkout
 @endsection
 
 @section('inhalt')
+<div>
+    <br> <br> <br> <br> 
 <div class="row">
     <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3 weißeSchrift">
         <h1>Checkout</h1>
