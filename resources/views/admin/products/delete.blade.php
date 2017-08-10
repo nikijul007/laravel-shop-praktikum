@@ -21,9 +21,9 @@ Admin - Change
             <p class="description">{{$product->description}}</p>
             <div class="pull-left price weißeSchrift"> {{ number_format($product->price, 2, ',', '.' ) }} €</div>
             <div class="clearfix">
-                <a href="{{ route('admin.products.index') }}" class="btn btn-info pull-right">No, don´t delete</a>
+               <a href="{{ route('admin.products.index') }}" class="btn btn-info pull-right">No, don´t delete</a>
                 <form action="{{ route('admin.products.delete', ['id' => $product->id]) }}" method="post" id='product-delete'>
-                    <button type="submit" class="btn btn-danger pull-right">Delete Product</button>
+                     <button type="submit" class="btn btn-danger pull-right">Delete Product</button>
                     <input type="hidden" name="method" value="delete">
                     {{csrf_field()}}
                 </form>

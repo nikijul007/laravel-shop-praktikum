@@ -61,7 +61,7 @@ class UserController extends Controller
         }
 
         $customerErrors = [
-            'Ihre Daten sind nicht in unserem System',
+            'Ihre Daten sind nicht in unserem System vorhanden.',
         ];
 
         return view('users.signin')->with(compact('customerErrors'));
